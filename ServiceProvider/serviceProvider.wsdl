@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions name="Results"
+    targetNamespace="http://localhost/WebServicesCA2/ServiceProvider/Results"
+    xmlns:tns="http://localhost/WebServicesCA2/ServiceRequestor/Results"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+>
+
+<!-- getAllGames() Request/Response -->
+<message name="getAllGamesRequest" type="Void" />
+<message name="getAllGamesResponse">
+    <part name="Result" type="xsd:string"/>
+</message>
+<!--END-->
+
+<!-- getGamesByNameResponse() Request/Response-->
+<message name="getGamesByNameRequest">
+    <part name="name" type="xsd:string" />
+</message>
+<message name="getGamesByNameResponse">
+    <part name="Result" type="xsd:string" />
+</message>
+<!--END-->
+
+<!-- getGamesByPlatformAndGenre() Request/Response -->
+<message name="getGamesByPlatformAndGenreRequest" >
+    <part name="platform" type="xsd:string" />
+    <part name="genre" type="xsd:string" />
+</message>
+<message name="getGamesByPlatformAndGenreResponse" >
+    <part name="Result" type="xsd:string" />
+</message>
+<!--END-->
+
+
+<portType name="ResultsPortType">
+    <!--getAllGames()-->
+    <operation name="getAllGames">
+        <input message="tns:getAllGamesRequest" />
+        <output message="tns:getAllGamesResponse" />
+    </operation>
+    <!--END-->
+
+    <!--getGamesByName()-->
+    <operation name="getGamesByName" >
+        <input message="tns:getGamesByNameRequest" />
+        <output message="tns:getGamesByNameResponse" />
+    </operation>
+    <!--END-->
+
+    <!--getGamesByPlatformAndGenre()-->
+    <operation name="getGamesByPlatformAndGenre" >
+        <input message="tns:getGamesByPlatformAndGenreRequest" />
+        <output message="tns:getGamesByPlatformAndGenreResponse" />
+    </operation>
+    <!--END-->
+
+</portType>
+
+<binding name="ResultsBinding" type="tns:ResultsPortType">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+
+    <!--getAllGames()-->
+    <operation name="getAllGames" >
+        <soap:operation soapAction="urn:localhost-Results#getAllGames" />
+
+        <input>
+            <soap:body use="encoded" namespace="urn:localhost-Results"
+                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" 
+            />
+        </input>
+
+        <output>
+            <soap:body use="encoded" namespace="urn:localhost-Results"
+                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+        </output>
+
+    </operation>
+    <!--END-->
+
+    <!--getGamesByName()-->
+    <operation name="getGamesByName">
+        <soap:operation soapAction="urn:localhost-Results#getGamesByName" />
+
+        <input>
+            <soap:body use="encoded" namespace="urn:localhost-Results"
+                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            />
+        </input>
+
+        <output>
+            <soap:body use="encoded" namespace="urn:localhost-Results"
+                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            />
+        </output>
+
+    </operation>
+    <!--END-->
+
+    <!--getGamesByPlatformAndGenre()-->
+     <operation name="getGamesByPlatformAndGenre">
+        <soap:operation soapAction="urn:localhost-Results#getGamesByPlatformAndGenre" />
+
+        <input>
+            <soap:body use="encoded" namespace="urn:localhost-Results"
+                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            />
+        </input>
+
+        <output>
+            <soap:body use="encoded" namespace="urn:localhost-Results"
+                encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+            />
+        </output>
+
+    </operation>
+    <!--END-->
+
+</binding>
+
+<service name="ResultsService">
+    <port name="ResultsPort" binding="ResultsBinding">
+        <soap:address location="http://localhost/WebServicesCA2/ServiceProvider/soap-server.php" />
+    </port>
+</service>
+
+</definitions>

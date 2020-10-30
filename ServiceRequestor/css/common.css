@@ -1,0 +1,52 @@
+.card-container {
+    display: flex;
+    flex-flow: wrap;
+    max-height: 450px;
+    overflow: auto;
+    margin-top: 25px;
+}
+
+.card-container > .card {
+    justify-content: space-between;
+    margin-top: 10px;
+    padding: 5px;
+    border: 2px solid blue;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    border-radius: 5px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.services-container > div:nth-child(1), .services-container > div:nth-child(2) {
+    flex-basis: 40%;
+}
+
+.services-container > div:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-basis: 100%;
+    margin-top: 30px;
+    padding: 5px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid blue;
+}
+
+button {
+    margin-left: 5px;
+}
+
+.services-container > div:nth-child(3) button {
+    width: 30%;
+}
